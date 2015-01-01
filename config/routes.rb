@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   resources :tasks
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:create]
+
+  get 'login' => 'sessions#new'
+  get 'logout' => 'sessions#destroy'
 
   root 'tasks#index'
   # The priority is based upon order of creation: first created -> highest priority.
