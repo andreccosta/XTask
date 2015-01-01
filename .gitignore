@@ -15,13 +15,12 @@
 /log/*.log
 /tmp
 
+# Mac
+.DS_Store
+
 # Ruby on Rails
 *.rbc
 .rspec
-/log
-/tmp
-/db/*.sqlite3
-/db/*.sqlite3-journal
 /public/system
 /coverage/
 /spec/tmp
