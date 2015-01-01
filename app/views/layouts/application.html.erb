@@ -8,20 +8,35 @@
 </head>
 <body>
 
-<h2>XTask</h2>
+<div id="header">
+	<div class="left" id="logo">
+		<h2>XTask</h2>
+	</div>
 
-<% if current_user.present? %>
-	Welcome <%= current_user.email %>! | 
-	<%= link_to 'Sign out', logout_path %>
-<% else %>
-	<%= link_to 'Register', new_user_path %>
-	<%= link_to 'Sign in', login_path %>
-<% end %>
+	<div class="right" id="nav-bar">
+	<% if current_user.present? %>
+		Welcome <%= current_user.email %>! | 
+		<%= link_to 'Sign out', logout_path %>
+	<% else %>
+		<%= link_to 'Register', new_user_path %>
+		<%= link_to 'Sign in', login_path %>
+	<% end %>
+	</div>
+</div>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div id="content">
+	<% if notice.present? %>
+		<div class="notification">
+			<p class="notice"><%= notice %></p>
+		</div>
+	<% end %>
+	<% if alert.present? %>
+		<div class="notification">
+			<p class="alert"><%= alert %></p>
+		</div>
+	<% end %>
 
-<%= yield %>
-
+	<%= yield %>
+</div>
 </body>
 </html>
