@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
 	validates :email, presence: true, uniqueness: true
 
+	has_many :tasks, dependent: :destroy
+
 	def email=(value)
 		value = value.strip.downcase
 		write_attribute :email, value

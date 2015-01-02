@@ -4,7 +4,12 @@ class TasksController < ApplicationController
 	end
 
 	def create
-		@task = Task.new(task_params)
+		if current_user.present?
+			@user = current_user
+			@task = @user.tasks.create(task_params)
+		else
+			@task = Task.new(task_params)
+		end
 
 		if @task.save
 			redirect_to @task
@@ -28,6 +33,6 @@ class TasksController < ApplicationController
 
 	private
 		def task_params
-			params.require(:task).permit(:name, :body)
+			params.require(:task).permit(:name, :body, :priority, :deadline)
 		end
 end

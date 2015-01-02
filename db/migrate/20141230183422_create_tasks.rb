@@ -5,6 +5,8 @@ class CreateTasks < ActiveRecord::Migration
       t.text :body
       t.integer :priority
 
+      t.belongs_to :user, index: true
+
       t.timestamps
     end
   end

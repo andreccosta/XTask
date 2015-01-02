@@ -1,3 +1,25 @@
 // Place all the styles related to the tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+table {
+	font-size: 0.8em;
+	margin: 0 auto;
+	width: 95%;
+	border-collapse: collapse;
+}
+
+th, td {
+	border-bottom: solid 1px;
+	border-color: #eee;
+	padding: 5px;
+}
+
+tbody > tr:hover {
+	background-color: #eee;
+}
+
+td.center {
+	text-align: center;
+}
