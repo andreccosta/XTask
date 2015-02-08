@@ -4,6 +4,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :name
       t.text :body
       t.integer :priority
+      t.integer :progress
 
       t.belongs_to :user, index: true
 

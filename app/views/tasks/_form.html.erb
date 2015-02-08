@@ -23,6 +23,11 @@
   </p>
 
   <p>
+    <%= f.label :progress %><br>
+    <%= f.number_field(:progress, in: 1..100, step: 1) %>
+  </p>
+
+  <p>
     <%= f.label :deadline %><br>
     <%= f.date_field(:deadline) %>
   </p>

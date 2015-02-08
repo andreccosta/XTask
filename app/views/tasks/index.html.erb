@@ -4,11 +4,12 @@
 	<thead>
 		<tr>
 			<th>#</th>
-			<th>Priority</th>
 			<th>Name</th>
 			<th>Description</th>
 			<th>Owner</th>
 			<th>Deadline</th>
+			<th>Priority</th>
+			<th>Progress</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -16,7 +17,7 @@
 <% @tasks.each do |task| %>
 	<tr onclick="document.location ='<%= task_path(task) %>'">
 		<td class="center"><%= task.id %></td>
-		<td class="center"><%= task.priority %></td>
+
 		<td>
 			<%= task.name %>
 		</td>
@@ -25,7 +26,7 @@
 		</td>
 		<td>
 			<% if task.user %>
-				<%= task.user.email %>
+				<a href='<%= user_path(task.user) %>'><%= task.user.email %></a>
 			<% else %>
 				Anonymous
 			<% end %>
@@ -34,6 +35,14 @@
 			<% if task.deadline %>
 				<%= task.deadline.strftime("%d/%m/%Y") %>
 			<% end %>
+		</td>
+		<td id="priority" class="center">
+			<%= task.priority %>
+		</td>
+		<td id="progress" class="center">
+			<div class="progress">
+				<div class="bar"><span><%= (task.progress.present?)? task.progress : 0 %></span></div>
+			</div>
 		</td>
 	</tr>
 <% end %>

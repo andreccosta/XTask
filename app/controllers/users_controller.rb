@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   	@user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to tasks_path, :notice => "User not found" 
+  end
+
   def create
   	@user = User.new(user_params)
 
