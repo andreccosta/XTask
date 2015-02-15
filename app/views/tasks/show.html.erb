@@ -1,10 +1,19 @@
-<h4>Task</h4>
+<h2>Task</h2>
 
-<%= @task.name %><br />
-<%= @task.body %>
+<div id="content">
+	<h5>Title</h5>
+	<%= @task.name %>
 
-<br />
+	<br />
 
+	<h3>Task</h3>
+	<%= @task.body %>
+</div>
 
-<%= link_to	'Delete', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' } %> | 
-<%= link_to 'Back', tasks_path %>
+<div class="button-group">
+		<% if @task.creator == current_user %>
+		<%= link_to	'Edit', edit_task_path(@task) %>
+		<%= link_to	'Delete', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
+		<%= link_to 'Back', tasks_path, class: 'button-primary' %>
+	</div>

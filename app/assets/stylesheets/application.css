@@ -64,17 +64,25 @@
 	color: #aaa;
 }
 
-#content {
+#container {
 	padding: 1em;
 }
 
-h2 {
+#content {
+	padding: 1em 0;
+}
+
+h1 {
 	font-size: 2em;
 }
 
-h4 {
+h2 {
 	font-size: 1.5em;
 	margin-bottom: 10px;
+}
+
+h3 {
+	font-size: 1.2em;
 }
 
 
@@ -85,6 +93,31 @@ a {
 
 a:hover {
 	color: #666;
+}
+
+/* Buttons */
+
+.button-group {
+	padding: 5px 0px;
+}
+
+.button-group a {
+	padding: 2px 5px;
+	color: white;
+	border: solid 1px blue;
+	background-color: lightblue;
+}
+
+.button-group a:hover {
+
+}
+
+.button-group .button-primary a {
+
+}
+
+.button-group .button-primary a:hover {
+
 }
 
 

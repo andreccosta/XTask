@@ -1,4 +1,4 @@
-<h4>Tasks</h4>
+<h2>Tasks</h2>
 
 <table>
 	<thead>
@@ -25,8 +25,8 @@
 			<%= task.body %>
 		</td>
 		<td>
-			<% if task.user %>
-				<a href='<%= user_path(task.user) %>'><%= task.user.email %></a>
+			<% if task.creator %>
+				<a href='<%= user_path(task.creator) %>'><%= task.creator.email %></a>
 			<% else %>
 				Anonymous
 			<% end %>

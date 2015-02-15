@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, uniqueness: true
 
 	has_many :groups
-	has_many :tasks, dependent: :destroy
+	has_many :tasks, dependent: :destroy, :foreign_key=>"creator_id", :class_name => "Task"
 
 	def email=(value)
 		value = value.strip.downcase

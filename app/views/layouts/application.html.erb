@@ -10,7 +10,7 @@
 
 <div id="header">
 	<div class="left" id="logo">
-		<h2><%= link_to 'XTask', root_url %></h2>
+		<h1><%= link_to 'XTask', root_url %></h1>
 	</div>
 
 	<div class="right" id="nav-bar">
@@ -18,13 +18,13 @@
 		Welcome <%= current_user.email %>! | 
 		<%= link_to 'Sign out', logout_path %>
 	<% else %>
-		<%= link_to 'Register', new_user_path %>
+		<%= link_to 'Register', new_user_path %> | 
 		<%= link_to 'Sign in', login_path %>
 	<% end %>
 	</div>
 </div>
 
-<div id="content">
+<div id="container">
 	<% if notice.present? %>
 		<div class="notification">
 			<p class="notice"><%= notice %></p>

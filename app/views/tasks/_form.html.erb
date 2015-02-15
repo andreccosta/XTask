@@ -1,3 +1,17 @@
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#task_priority').change(function() {
+    console.log($('#priorityAmount').val());
+    console.log($('#task_priority').val());
+    $('#priorityAmount').val($('#task_priority').val());
+  });
+  $('#task_progress').change(function() {
+    console.log($('#task_progress').val());
+  });
+
+});  
+</script>
+
 <% if @task.errors.any? %>
 <ul>
     <% @task.errors.full_messages.each do |msg| %>
@@ -6,7 +20,9 @@
     </ul>
 <% end %>
 
-<%= form_for :task, url: tasks_path do |f| %>
+<%= @task.new_record? %>
+
+<%= form_for :task, url: (@task.new_record? ? tasks_path : task_path(@task)), method: (@task.new_record? ? :post : :put) do |f| %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -19,12 +35,14 @@
 
   <p>
     <%= f.label :priority %><br>
-    <%= f.number_field(:priority, in: 1..20, step: 1) %>
+    <%= f.range_field(:priority, in: 1..20, step: 1, value: 1) %>
+    <output name="priorityAmount" id="priorityAmount" for="task[priority]">1</output>
   </p>
 
   <p>
     <%= f.label :progress %><br>
-    <%= f.number_field(:progress, in: 1..100, step: 1) %>
+    <%= f.range_field(:progress, in: 1..100, step: 1, value: 1) %>
+    <%= f.number_field(:progress, in: 1..100, step: 1, value: 1) %> %
   </p>
 
   <p>

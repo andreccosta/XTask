@@ -1,5 +1,9 @@
 class TasksController < ApplicationController
 	def new
+		if !current_user.present?
+			redirect_to login_path, :notice => "You need to login before creating a task"
+			return
+		end
 		@task = Task.new
 	end
 
@@ -8,7 +12,8 @@ class TasksController < ApplicationController
 			@user = current_user
 			@task = @user.tasks.create(task_params)
 		else
-			@task = Task.new(task_params)
+			redirect_to login_path, :notice => "You need to login before creating a task"
+			return
 		end
 
 		if @task.save
@@ -26,13 +31,31 @@ class TasksController < ApplicationController
 
 	def index
 		@tasks = Task.all
-	end	
+	end
+
+	def edit
+		@task = Task.find(params[:id])
+	end
+
+	def update
+		@task = Task.find(params[:id])
+
+		if @task.update(task_params)
+			redirect_to @task
+		else
+			render 'edit'
+		end
+	end
 
 	def destroy
 		@task = Task.find(params[:id])
-		@task.destroy
 
-		redirect_to tasks_path, :notice => "Task deleted"
+		if(current_user == @task.user)
+			@task.destroy
+			redirect_to tasks_path, :notice => "Task deleted"
+		else
+			redirect_to tasks_path, :notice => "You can't delete this task!" 
+		end
 	end
 
 	private
