@@ -95,6 +95,14 @@ a:hover {
 	color: #666;
 }
 
+input {
+	outline: none;
+}
+
+input {
+	font-size: 0.7rem;
+}
+
 /* Buttons */
 
 .button-group {

@@ -30,7 +30,7 @@ class TasksController < ApplicationController
 	end
 
 	def index
-		@tasks = Task.all
+		@tasks = Task.search(params[:search])
 	end
 
 	def edit
