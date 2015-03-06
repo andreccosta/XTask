@@ -1,0 +1,4 @@
+$("#tasks").html("<%= escape_javascript(render("tasks")) %>")
+$(".progress_value").each(function(i, item) {
+    	setPercentage($(".bar").get(i), $(this).text());
+    });

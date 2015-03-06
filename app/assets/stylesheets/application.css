@@ -95,6 +95,15 @@ a:hover {
 	color: #666;
 }
 
+a.button {
+	padding: 6px 12px;
+	background-color: #ddd;
+}
+
+a.button:hover{
+	background-color: #eee;
+}
+
 input {
 	outline: none;
 }
@@ -103,29 +112,14 @@ input {
 	font-size: 0.7rem;
 }
 
-/* Buttons */
-
-.button-group {
-	padding: 5px 0px;
+/* Pagination */
+.pagination {
+	padding: 10px 20px;
+	font-size: 0.8rem;
 }
 
-.button-group a {
-	padding: 2px 5px;
-	color: white;
-	border: solid 1px blue;
-	background-color: lightblue;
-}
-
-.button-group a:hover {
-
-}
-
-.button-group .button-primary a {
-
-}
-
-.button-group .button-primary a:hover {
-
+.pagination .disabled {
+	color: #ddd;
 }
 
 

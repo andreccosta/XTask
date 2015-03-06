@@ -1,0 +1,51 @@
+<table id="tasks_table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Owner</th>
+			<th>Deadline</th>
+			<th>Priority</th>
+			<th>Progress</th>
+		</tr>
+	</thead>
+	<tbody>
+
+<% @tasks.each do |task| %>
+	<tr onclick="document.location ='<%= task_path(task) %>'">
+		<td class="center"><%= task.id %></td>
+
+		<td>
+			<%= task.name %>
+		</td>
+		<td>
+			<%= task.body %>
+		</td>
+		<td>
+			<% if task.creator %>
+				<a href='<%= user_path(task.creator) %>'><%= task.creator.email %></a>
+			<% else %>
+				Anonymous
+			<% end %>
+		</td>
+		<td>
+			<% if task.deadline %>
+				<%= task.deadline.strftime("%d/%m/%Y") %>
+			<% end %>
+		</td>
+		<td id="priority" class="center">
+			<%= task.priority %>
+		</td>
+		<td class="progress_value" style="display:none;"><%= (task.progress.present?)? task.progress : 0 %></td>
+		<td id="progress" class="center">
+			<div class="progress">
+				<div class="bar"><span></span></div>
+			</div>
+		</td>
+	</tr>
+<% end %>
+	</tbody>
+</table>
+
+<%= will_paginate @tasks, :class => 'pagination right' %>

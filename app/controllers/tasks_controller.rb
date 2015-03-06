@@ -30,7 +30,7 @@ class TasksController < ApplicationController
 	end
 
 	def index
-		@tasks = Task.search(params[:search])
+		@tasks = Task.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
 	end
 
 	def edit
