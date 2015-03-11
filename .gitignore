@@ -27,3 +27,6 @@
 
 # RVM
 .rvmrc
+
+# Secrets
+config/secrets.yml
