@@ -11,7 +11,7 @@
   <fieldset>
     <div class="input-group">
       <%= f.label 'Title' %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, autocomplete: 'off' %>
     </div>
 
     <div class="input-group">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="input-group">
-    <%= f.text_area :body , size: "40x6" %>
+    <%= f.text_area :body , size: "53x4", autocomplete: 'off' %>
     </div>
 
     <div class="input-controls">

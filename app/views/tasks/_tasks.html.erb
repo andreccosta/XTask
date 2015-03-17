@@ -19,7 +19,7 @@
 			<%= task.name %>
 		</td>
 		<td>
-			<%= task.body %>
+			<%= truncate(sanitize(task.body), :length => 50) %>
 		</td>
 		<td>
 			<% if task.creator %>

@@ -17,19 +17,30 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
  * {
- 	font-family: Open Sans, sans-serif;
- 	font-size: 1em;
  	margin: 0;
  	padding: 0;
  	box-sizing: border-box;
+ }
+
+ html, body {
+ 	font-family: Open Sans, sans-serif;
+ 	font-size: 14px;
  }
 
  .right {
  	float: right;
  }
 
+ .center {
+ 	text-align: center;
+ }
+
  .left {
  	float: left;
+ }
+
+ .small {
+ 	font-size: 1rem;
  }
 
  .notification {
@@ -65,11 +76,17 @@
 }
 
 #container {
+	font-size: 16px;
+	padding: 0.5em 1em;
+}
+
+#container p {
+	font-size: 12px;
 	padding: 1em;
 }
 
 #content {
-	padding: 1em 0;
+	padding: 0.5em;
 }
 
 h1 {
@@ -78,7 +95,7 @@ h1 {
 
 h2 {
 	font-size: 1.5em;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 h3 {
@@ -106,10 +123,13 @@ a.button:hover{
 
 input {
 	outline: none;
+	font-size: 1rem;
 }
 
-input {
-	font-size: 0.7rem;
+.separator {
+	width: 100%;
+	border-bottom: solid 1px #ccc;
+	margin: 5px 0;
 }
 
 /* Pagination */
@@ -120,6 +140,12 @@ input {
 
 .pagination .disabled {
 	color: #ddd;
+}
+
+/* Button groups */
+.button-group {
+	margin: 0.5em 0;
+	padding: 0.5em;
 }
 
 /* Table */
@@ -141,13 +167,17 @@ td.center {
 }
 
 /* Form */
+textarea {
+	border: solid 1px #ccc;
+}
+
 .input-form {
 	width: 340px;
 	margin: 0 auto;
 }
 
 .input-form span {
-	font-size: 12px;
+	font-size: 0.9rem;
 	color: darkgray;
 }
 
@@ -158,11 +188,15 @@ td.center {
 }
 
 .input-form label {
+	width: 100px;
 	text-align: right;
 	display: inline-block;
 	vertical-align: middle;
-	width: 100px;
 	margin-right: 1em;
+}
+
+.input-form textarea {
+	font-size: 12px;
 }
 
 .input-form input {
@@ -182,9 +216,15 @@ td.center {
 }
 
 .input-form input[type=submit] {
+	border: none;
 	width: auto;
 	padding: 6px 12px;
 	cursor: pointer;
+	background-color: #ddd;
+}
+
+.input-form input[type=submit]:hover {
+	background-color: #eee;
 }
 
 .input-form .task_progress_input[type=range] {

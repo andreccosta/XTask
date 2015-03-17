@@ -1,22 +1,31 @@
 <h2><%= @task.name %></h2>
 
 <div id="content">
-	<p><%= @task.body %></p>
 	<p><%= @task.progress %>%</p>
+	<p><%= @task.body %></p>
+	
+	<div class="separator"></div>
+
 	<h3>Sub-tasks</h3>
 	<% @task.subtasks.each do |subtask| %>
 	<p><label>Name:</label> <%= subtask.name %> <label>Body:</label> <%= subtask.body %></p>
 	<% end %>
 
-	<h3>Add new sub-task</h3>
+	<div class="input-form">
+	<h4>Add new sub-task</h4>
 	<%= form_for (@subtask = @task.subtasks.new) do |f| %>
-		<div class="form">
+		<fieldset>
+		<div class="input-group">
 			<%= f.hidden_field :parent_id, :value => @subtask.parent.id %>
+			<%= f.label :name, :class => 'small' %>
 			<%= f.text_field :name %>
-			<%= f.text_field :body %>
+		</div>
+		<div class="input-controls">
 			<%= f.submit %>
 		</div>
+		</fieldset>
 	<% end %>
+	</div>
 </div>
 
 <div class="button-group">
@@ -26,3 +35,4 @@
 		<%= link_to	'Delete', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %>
 	<% end %>		
 </div>
+
