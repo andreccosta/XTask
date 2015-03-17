@@ -6,7 +6,6 @@
 			<th>Description</th>
 			<th>Owner</th>
 			<th>Deadline</th>
-			<th>Priority</th>
 			<th>Progress</th>
 		</tr>
 	</thead>
@@ -33,9 +32,6 @@
 			<% if task.deadline %>
 				<%= task.deadline.strftime("%d/%m/%Y") %>
 			<% end %>
-		</td>
-		<td id="priority" class="center">
-			<%= task.priority %>
 		</td>
 		<td class="progress_value" style="display:none;"><%= (task.progress.present?)? task.progress : 0 %></td>
 		<td id="progress" class="center">

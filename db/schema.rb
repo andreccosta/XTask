@@ -11,24 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215034009) do
+ActiveRecord::Schema.define(version: 20150317143513) do
 
-  create_table "tasks", force: true do |t|
-    t.string   "name"
+  create_table "tasks", force: :cascade do |t|
+    t.string   "name",           limit: 255
     t.text     "body"
-    t.integer  "priority"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "deadline"
-    t.integer  "progress"
+    t.integer  "progress",                   default: 0
     t.integer  "creator_id"
+    t.integer  "parent_task_id"
   end
 
   add_index "tasks", ["creator_id"], name: "index_tasks_on_creator_id"
 
-  create_table "users", force: true do |t|
-    t.string   "email"
-    t.string   "password_digest"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",           limit: 255
+    t.string   "password_digest", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

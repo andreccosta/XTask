@@ -9,8 +9,11 @@ class TasksController < ApplicationController
 
 	def create
 		if current_user.present?
-			@user = current_user
-			@task = @user.tasks.create(task_params)
+			@task = Task.new(task_params)
+			@task.creator = current_user
+			if params[:task].has_key?(:parent_id)
+				@task.parent = Task.find(params[:task][:parent_id])
+			end
 		else
 			redirect_to login_path, :notice => "You need to login before creating a task"
 			return
@@ -50,7 +53,7 @@ class TasksController < ApplicationController
 	def destroy
 		@task = Task.find(params[:id])
 
-		if(current_user == @task.user)
+		if(current_user == @task.creator)
 			@task.destroy
 			redirect_to tasks_path, :notice => "Task deleted"
 		else
@@ -60,6 +63,6 @@ class TasksController < ApplicationController
 
 	private
 		def task_params
-			params.require(:task).permit(:name, :body, :priority, :deadline, :progress)
+			params.require(:task).permit(:name, :body, :priority, :deadline, :progress, :creator, :task_parent_id)
 		end
 end

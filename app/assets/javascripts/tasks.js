@@ -12,6 +12,10 @@ $( document ).on("ready page:load", function() {
       $.get(this.action, $(this).serialize(), null, "script");
       return false;
     });
+
+    $('.task_progress_input').on("change mousemove blur", function() {
+      $('.task_progress_input').val($(this).val());
+    });
 });
 
 

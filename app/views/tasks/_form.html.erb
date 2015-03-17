@@ -1,56 +1,37 @@
-<script type="text/javascript">
-$(document).ready(function() {
-  $('#task_priority').change(function() {
-    console.log($('#priorityAmount').val());
-    console.log($('#task_priority').val());
-    $('#priorityAmount').val($('#task_priority').val());
-  });
-  $('#task_progress').change(function() {
-    console.log($('#task_progress').val());
-  });
-
-});  
-</script>
-
 <% if @task.errors.any? %>
 <ul>
-    <% @task.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+  <% @task.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
 <% end %>
 
-<%= @task.new_record? %>
-
+<div class="input-form">
 <%= form_for :task, url: (@task.new_record? ? tasks_path : task_path(@task)), method: (@task.new_record? ? :post : :put) do |f| %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
- 
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
+  <fieldset>
+    <div class="input-group">
+      <%= f.label 'Title' %>
+      <%= f.text_field :name %>
+    </div>
 
-  <p>
-    <%= f.label :priority %><br>
-    <%= f.range_field(:priority, in: 1..20, step: 1, value: 1) %>
-    <output name="priorityAmount" id="priorityAmount" for="task[priority]">1</output>
-  </p>
+    <div class="input-group">
+    <%= f.label :progress %>
+    <%= f.range_field :progress, in: 0..100, step: 1, value: 0, class: 'task_progress_input' %>
+    <%= f.number_field :progress, in: 0..100, step: 1, value: 0, class: 'task_progress_input' %><span>%</span>
+    </div>
 
-  <p>
-    <%= f.label :progress %><br>
-    <%= f.range_field(:progress, in: 1..100, step: 1, value: 1) %>
-    <%= f.number_field(:progress, in: 1..100, step: 1, value: 1) %> %
-  </p>
+    <div class="input-group">
+      <%= f.label :deadline %>
+      <%= f.date_field(:deadline) %>
+    </div>
 
-  <p>
-    <%= f.label :deadline %><br>
-    <%= f.date_field(:deadline) %>
-  </p>
-  
-  <p>
+    <div class="input-group">
+    <%= f.text_area :body , size: "40x6" %>
+    </div>
+
+    <div class="input-controls">
     <%= f.submit %>
-  </p>
+    </div>
+  </fieldset>
 <% end %>
+</div>

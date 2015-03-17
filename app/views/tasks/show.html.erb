@@ -2,6 +2,21 @@
 
 <div id="content">
 	<p><%= @task.body %></p>
+	<p><%= @task.progress %>%</p>
+	<h3>Sub-tasks</h3>
+	<% @task.subtasks.each do |subtask| %>
+	<p><label>Name:</label> <%= subtask.name %> <label>Body:</label> <%= subtask.body %></p>
+	<% end %>
+
+	<h3>Add new sub-task</h3>
+	<%= form_for (@subtask = @task.subtasks.new) do |f| %>
+		<div class="form">
+			<%= f.hidden_field :parent_id, :value => @subtask.parent.id %>
+			<%= f.text_field :name %>
+			<%= f.text_field :body %>
+			<%= f.submit %>
+		</div>
+	<% end %>
 </div>
 
 <div class="button-group">
