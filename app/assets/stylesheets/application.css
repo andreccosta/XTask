@@ -153,7 +153,7 @@ table {
 	font-size: 0.8em;
 	margin: 0 auto;
 	border-collapse: collapse;
-  text-align: center;
+	text-align: center;
 }
 
 th, td {
@@ -169,6 +169,30 @@ td.center {
 /* Form */
 textarea {
 	border: solid 1px #ccc;
+}
+
+input {
+	padding: 4px 5px;
+	vertical-align: middle;
+	border: none;
+	border-bottom: solid 1px #ccc;
+}
+
+input[type=submit] {
+	border: none;
+	width: auto;
+	padding: 6px 12px;
+	cursor: pointer;
+	background-color: #ddd;
+}
+
+input[type=submit]:hover {
+	background-color: #eee;
+}
+
+.input-search {
+	overflow: auto;
+	margin-bottom: 10px;
 }
 
 .input-form {
@@ -201,10 +225,6 @@ textarea {
 
 .input-form input {
 	width: 180px;
-	padding: 4px 5px;
-	vertical-align: middle;
-	border: none;
-	border-bottom: solid 1px #ccc;
 }
 
 .input-form .field_with_errors {
@@ -216,11 +236,7 @@ textarea {
 }
 
 .input-form input[type=submit] {
-	border: none;
 	width: auto;
-	padding: 6px 12px;
-	cursor: pointer;
-	background-color: #ddd;
 }
 
 .input-form input[type=submit]:hover {

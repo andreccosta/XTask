@@ -1,9 +1,10 @@
 <h2>Tasks</h2>
-
+<div class="input-search">
 <%= form_tag tasks_path, :method => 'get',:id => 'tasks_search', :class => 'right' do %>
 	<%= search_field_tag :search, params[:search] %>
 	<%= submit_tag "Search", :name => nil %>
 <% end %>
+</div>
 
 <div id="tasks"><%= render 'tasks' %></div>
 
