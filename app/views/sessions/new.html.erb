@@ -1,19 +1,19 @@
-<h2>Login</h2>
-
-<%= form_tag sessions_path do %>
-	<div>
+<div class="input-login">
+	<%= form_tag sessions_path do %>
+	<fieldset>
+		<div class="input-group">
 		<%= label_tag 'email', 'Email' %>
-		<br>
 		<%= text_field_tag 'email' %>
+		</div>
 
-		<br>
-
+		<div class="input-group">
 		<%= label_tag 'password', 'Password' %>
-		<br>
 		<%= password_field_tag 'password' %>
+		</div>
 
-		<br>
-
+		<div class="input-controls">
 		<%= submit_tag 'Login' %>
-	</div>
-<% end %>
+		</div>
+	</fieldset>
+	<% end %>
+</div>

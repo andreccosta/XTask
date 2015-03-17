@@ -45,7 +45,6 @@
 
  .notification {
  	width: 500px;
- 	padding: 15px;
  	margin: 0 auto;
  	text-align: center;
  	border: solid 1px #ccc;
@@ -195,6 +194,25 @@ input[type=submit]:hover {
 	margin-bottom: 10px;
 }
 
+.input-login {
+	width: 300px;
+	margin: 0 auto;
+}
+
+.input-login fieldset {
+	border: none;
+	margin: 0;
+	padding: 10px 0;
+}
+
+.input-login label {
+	width: 100px;
+	text-align: right;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 1em;
+}
+
 .input-form {
 	width: 340px;
 	margin: 0 auto;
@@ -251,7 +269,7 @@ input[type=submit]:hover {
 	width: 40px;
 }
 
-.input-form .input-group {
+.input-group {
 	margin-bottom: 15px;
 }
 

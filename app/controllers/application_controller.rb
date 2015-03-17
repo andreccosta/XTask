@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  before_action :require_login
+
   private
   	def sign_in(user)
   		session[:user_id] = user.id if user.present?
@@ -16,5 +18,12 @@ class ApplicationController < ActionController::Base
 
   	def current_user
   		User.find_by id: session[:user_id] if session[:user_id]
-  	end  
+  	end
+
+    def require_login
+      unless current_user
+        flash[:alert] = "No access. Please login first."
+        redirect_to login_path
+      end
+    end
 end
