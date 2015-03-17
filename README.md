@@ -1,5 +1,6 @@
-XTask
-==
+#XTask
+
+> **Current status**: Early development.
 
 README
 --
