@@ -9,10 +9,14 @@
 	<div class="collapsable hidden">
 		<% @task.files.each do |file| %>
 		<p>
+		<label>Name:</label>
+		<%= file.original_filename %>
+		<label>Type:</label>
+		<%= file.content_type %>
 		<label>Url:</label>
 		<%= file.url %>
-		<%= link_to "Download", :action => "download", :fileid => file.id %>
-		<%= link_to "Delete", :action => "remove", :fileid => file.id %>
+		<%= link_to "Download", { :action => "download" , :fileid => file.id } %>
+		<%= link_to "Delete", { :action => "remove", :fileid => file.id}, data: { confirm: 'Are you sure you want to delete this file?' } %>
 		</p>
 		<% end %>
 

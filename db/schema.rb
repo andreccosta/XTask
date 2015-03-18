@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150318173612) do
+ActiveRecord::Schema.define(version: 20150318212638) do
 
   create_table "data_files", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "task_id"
     t.string   "url"
+    t.string   "content_type"
+    t.string   "original_filename"
   end
 
   add_index "data_files", ["task_id"], name: "index_data_files_on_task_id"

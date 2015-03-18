@@ -129,6 +129,10 @@ a.button:hover{
 	background-color: #eee;
 }
 
+label {
+	color: darkgray;
+}
+
 input {
 	outline: none;
 	font-size: 1rem;

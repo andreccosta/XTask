@@ -58,9 +58,12 @@ class TasksController < ApplicationController
 	def upload
 		@task = Task.find(params[:id])
 		if params.has_key?(:task) && params[:task].has_key?(:file)
+			uploaded = params[:task][:file]
 			@file = @task.files.new
 
-			@file.url = @file.save_file(params[:task][:file])
+			@file.content_type = uploaded.content_type
+			@file.original_filename = uploaded.original_filename
+			@file.url = @file.save_file(uploaded)
 
 			@file.save
 
