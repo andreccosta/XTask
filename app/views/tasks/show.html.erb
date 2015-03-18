@@ -8,12 +8,12 @@
 	<h3 class="collapsable clickable">Files</h3>
 	<div class="collapsable hidden">
 		<% @task.files.each do |file| %>
-		<p><label>Name:</label> <%= file.name %></p>
+		<p><label>Url:</label> <%= file.url %> <%= link_to "Download", :action=>"download", :id=>file.id %></p>
 		<% end %>
 
 		<p>Add file to task</p>
-		<%= form_for @task do |f| %>
-			<%= f.file_field :files %>
+		<%= form_for @task, url: {action: "upload"}, method: :post do |f| %>
+			<%= f.file_field :file %>
 			<%= f.submit 'Upload' %>
 		<% end %>
 	</div>

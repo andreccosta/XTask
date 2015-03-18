@@ -50,6 +50,22 @@ class TasksController < ApplicationController
 		end
 	end
 
+	def download
+		@file = DataFile.find(params[:id])
+		send_file(@file.url)
+	end
+
+	def upload
+		@task = Task.find(params[:id])
+		@file = @task.files.new
+
+		@file.url = @file.save_file(params[:task][:file])
+
+		@file.save
+
+		redirect_to tasks_path(@task)
+	end
+
 	def destroy
 		@task = Task.find(params[:id])
 
@@ -63,6 +79,6 @@ class TasksController < ApplicationController
 
 	private
 		def task_params
-			params.require(:task).permit(:name, :body, :priority, :deadline, :progress, :creator, :task_parent_id)
+			params.require(:task).permit(:name, :body, :priority, :deadline, :progress, :creator, :task_parent_id, :file)
 		end
 end
