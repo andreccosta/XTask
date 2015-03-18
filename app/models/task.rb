@@ -3,6 +3,9 @@
 	belongs_to :parent, class_name: "Task", :foreign_key => "parent_task_id"
 
 	belongs_to :creator, :foreign_key => "creator_id", :class_name => "User"
+
+	has_many :files, class_name: "DataFile", dependent: :destroy
+
 	validates :name, presence: true
 
 	def self.search(search)
