@@ -24,3 +24,6 @@
 
 # Secrets
 config/secrets.yml
+
+# Ignore stored files
+/storage/

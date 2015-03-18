@@ -51,19 +51,36 @@ class TasksController < ApplicationController
 	end
 
 	def download
-		@file = DataFile.find(params[:id])
+		@file = DataFile.find(params[:fileid])
 		send_file(@file.url)
 	end
 
 	def upload
 		@task = Task.find(params[:id])
-		@file = @task.files.new
+		if params.has_key?(:task) && params[:task].has_key?(:file)
+			@file = @task.files.new
 
-		@file.url = @file.save_file(params[:task][:file])
+			@file.url = @file.save_file(params[:task][:file])
 
-		@file.save
+			@file.save
 
-		redirect_to tasks_path(@task)
+			redirect_to @task
+		else
+			redirect_to @task
+		end
+	end
+
+	def remove
+		@task = Task.find(params[:id])
+
+		@file = DataFile.find(params[:fileid])
+		if File.exist?(@file.url)
+			File.delete(@file.url) 
+			@file.destroy
+			redirect_to @task, :notice => "File deleted!"
+		else
+			redirect_to @task, :notice => "Could not find this file!"
+		end
 	end
 
 	def destroy

@@ -8,7 +8,12 @@
 	<h3 class="collapsable clickable">Files</h3>
 	<div class="collapsable hidden">
 		<% @task.files.each do |file| %>
-		<p><label>Url:</label> <%= file.url %> <%= link_to "Download", :action=>"download", :id=>file.id %></p>
+		<p>
+		<label>Url:</label>
+		<%= file.url %>
+		<%= link_to "Download", :action => "download", :fileid => file.id %>
+		<%= link_to "Delete", :action => "remove", :fileid => file.id %>
+		</p>
 		<% end %>
 
 		<p>Add file to task</p>
