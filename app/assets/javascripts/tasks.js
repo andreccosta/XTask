@@ -16,6 +16,10 @@ $( document ).on("ready page:load", function() {
     $('.task_progress_input').on("change mousemove blur", function() {
       $('.task_progress_input').val($(this).val());
     });
+
+    $('h3.clickable').click(function() {
+      $(this).next('.collapsable').slideToggle();
+    });
 });
 
 
