@@ -1,4 +1,10 @@
 $( document ).on("ready page:load", function() {
+  // Stop propagating click events on table rows
+    $('table a').click(function(event) {
+      event.stopPropagation();
+      return true;
+    });
+
     $(".progress_value").each(function(i, item) {
     	setPercentage($(".bar").get(i), $(this).text());
     });
@@ -21,8 +27,6 @@ $( document ).on("ready page:load", function() {
       $(this).next('.collapsable').slideToggle();
     });
 });
-
-
 
 var randomPercentage = function(element) {
   var percent = Math.floor((Math.random() * 100) + 1);
