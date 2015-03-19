@@ -6,7 +6,7 @@
 
 	<div class="separator"></div>
 	<h3 class="collapsable clickable">Files</h3>
-	<div class="collapsable hidden">
+	<div class="collapsable">
 		<% @task.files.each do |file| %>
 		<p>
 		<label>Name:</label>
@@ -29,15 +29,15 @@
 
 	<div class="separator"></div>
 	<h3 class="collapsable clickable">People</h3>
-	<div class="collapsable hidden">
+	<div class="collapsable">
 	</div>
 
 	<div class="separator"></div>
 
 	<h3 class="collapsable clickable">Sub-tasks</h3>
-	<div class="collapsable hidden">
+	<div class="collapsable">
 		<% @task.subtasks.each do |subtask| %>
-		<p><label>Name:</label> <%= subtask.name %> <label>Body:</label> <%= subtask.body %></p>
+		<p><label>Name:</label> <%= subtask.name %> <label>Body:</label> <%= subtask.body %><label>Progress:</label> <%= subtask.progress %> </p>
 		<% end %>
 
 		<div class="input-form">

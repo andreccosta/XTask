@@ -33,7 +33,7 @@ class TasksController < ApplicationController
 	end
 
 	def index
-		@tasks = current_user.tasks.search(params[:search]).paginate(:per_page => 10, :page => params[:page])
+		@tasks = current_user.tasks.where(parent_task_id: nil).search(params[:search]).paginate(:per_page => 10, :page => params[:page])
 	end
 
 	def edit
